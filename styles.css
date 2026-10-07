@@ -46,11 +46,6 @@ a {
     color: inherit;
 }
 
-header {
-    height: 0;
-    overflow: hidden;
-}
-
 h1,
 h2,
 h3 {
@@ -272,6 +267,7 @@ h3 {
     display: flex;
     gap: 1.4rem;
     list-style: none;
+    justify-content:flex-start;
 }
 
 .nav_link {
@@ -742,4 +738,203 @@ footer {
     font-weight: 600;
     letter-spacing: 0.1em;
     color: var(--sage-light);
+}
+
+/*         RESPONSIVE         */
+
+@media (max-width: 900px) {
+
+    :root {
+        --display-size: clamp(3.4rem, 19vw, 7rem);
+    }
+
+
+    .stage {
+        height: 100svh;           
+    }
+
+    .signature {
+        top: 2.5%;
+        right: 6vw;
+        font-size: 1.7rem;
+    }
+
+    .hint {
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+    }
+
+    .intro > p {
+        left: 0;
+        right: 0;
+        top: 20%;
+        width: auto;
+        padding: 0 10vw;
+        font-size: clamp(1.4rem, 6vw, 2.2rem);
+        text-align: center;
+        text-wrap: balance;
+        animation-name: intro-in-m;
+    }
+
+    .img_container {
+        top: 30%;
+        width: min(52vw, 25vh);
+        width: min(52vw, 25svh);
+        height: auto;
+        aspect-ratio: 46 / 58;
+    }
+
+    .about_me_section {
+        left: 7vw;
+        right: 7vw;
+        top: 64%;
+        width: auto;
+        animation-name: about-in-m;
+    }
+
+    .about_me_heading {
+        font-size: 1.7rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .about_me_section p {
+        font-size: 0.88rem;
+        line-height: 1.55;
+    }
+
+    .navigation {
+        margin: 0.8rem 0 0.6rem;
+        padding: 0.5rem 0;
+    }
+
+    @keyframes intro-in-m {
+        0%, 70%   { opacity: 0; transform: translateY(-14px); }
+        84%, 100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes about-in-m {
+        0%, 72% {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(28px);
+        }
+        88%, 100% {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    }
+
+    /* Sections */
+
+    .education,
+    .skills,
+    .interests {
+        padding: 10vh 0;
+    }
+
+    .section_container {
+        width: 88vw;
+    }
+
+    .education .section_container,
+    .skills .section_container {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto;
+        row-gap: 2rem;
+    }
+
+    .skills .section_title,
+    .skills .section_container > p,
+    .skills_grid {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .skills .section_container > p {
+        margin-top: 0;
+        max-width: 40ch;
+    }
+
+    .skills_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Interests */
+
+    .interests .section_container > p {
+        margin-bottom: 2rem;
+    }
+
+    .interest_item {
+        grid-template-columns: 1fr;
+        row-gap: 0.6rem;
+        padding: 1.6rem 0;
+    }
+
+    .interest_item h3 {
+        gap: 1rem;
+    }
+
+    .interest_item h3::before {
+        min-width: 1.6rem;         
+    }
+
+    .interest_item p {
+        padding-left: 2.6rem;   
+    }
+
+    .interest_item h3::before {
+        color: var(--red);
+    }
+
+    /* Footer */
+
+    footer {
+        padding: 12vh 6vw 4vh;
+    }
+
+    .contact h2 {
+        font-size: clamp(2.8rem, 13vw, 5rem);
+    }
+
+    .contact_links {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .skills_grid {
+        gap: 0.8rem;
+    }
+
+    .skill_card {
+        padding: 1.2rem;
+        min-height: 8rem;
+    }
+
+    .skill_card h3 {
+        font-size: 1.5rem;
+    }
+
+    .skill_card p {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+    }
+
+    .skill_card::before {
+        top: 1.2rem;
+        right: 1.2rem;
+    }
+
+    .contact_links a {
+        padding: 0.8rem 1.4rem;
+    }
+
+    .footer_bottom {
+        flex-direction: column;
+        gap: 0.4rem;
+        margin-top: 8vh;
+    }
 }
